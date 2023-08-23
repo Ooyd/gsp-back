@@ -1,2 +1,18 @@
-package yemenshi.gsp.todo_list.controller.common.DTO;public class MemberDTO {
+package yemenshi.gsp.todo_list.domain.common.DTO;
+
+
+import jakarta.persistence.Column;
+import lombok.Getter;
+import lombok.Setter;
+
+@Getter @Setter
+public class MemberDTO {
+
+  private Long id;
+
+  private String memberEmail;
+
+
+  private String memberName;
 }
+

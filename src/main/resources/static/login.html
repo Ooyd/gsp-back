@@ -3,6 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <title>login</title>
+<<<<<<< HEAD
+=======
+    <script src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
+>>>>>>> 00ac5988304980a59e69280eebdfd5ec4af0a342
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -35,12 +39,19 @@
         input[type="submit"]:hover {
             background-color: #0056b3;
         }
+<<<<<<< HEAD
+=======
+        #check-result {
+            margin-bottom: 20px;
+        }
+>>>>>>> 00ac5988304980a59e69280eebdfd5ec4af0a342
     </style>
 </head>
 <body>
 <form action="member/login" method="post">
     <label>
         이메일:
+<<<<<<< HEAD
         <input type="text" name="memberEmail" placeholder="example@example.com">
     </label>
 <!--    <label>-->
@@ -49,5 +60,45 @@
 <!--    </label>-->
     <input type="submit" value="로그인">
 </form>
+=======
+        <input type="text" id="memberEmail" name="memberEmail" placeholder="example@example.com" onblur="emailCheck()">
+    </label>
+    <p id="check-result"></p>
+    <input type="submit" value="로그인">
+</form>
+
+<script>
+    const emailCheck = () => {
+        const email = document.getElementById("memberEmail").value;
+        const checkResult = document.getElementById("check-result");
+        console.log("입력값: ", email);
+        $.ajax({
+            type: "post",
+            url: "/member/email-check",
+            data: {
+                "memberEmail": email
+            },
+            success: function(res) {
+                console.log("요청성공", res);
+                if (res == "ok") {
+                    console.log("사용가능한 이메일");
+                    checkResult.style.color = "green";
+                    checkResult.innerHTML = "사용가능한 이메일";
+                } else {
+                    console.log("이미 사용중인 이메일");
+                    checkResult.style.color = "red";
+                    checkResult.innerHTML = "이미 사용중인 이메일";
+                }
+            },
+            error: function(err) {
+                console.log("에러발생", err);
+                checkResult.style.color = "red";
+                checkResult.innerHTML = "서버 에러 발생. 다시 시도해주세요.";
+            }
+        });
+    }
+</script>
+
+>>>>>>> 00ac5988304980a59e69280eebdfd5ec4af0a342
 </body>
 </html>
