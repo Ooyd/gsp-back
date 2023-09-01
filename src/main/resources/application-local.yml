@@ -33,6 +33,3 @@ logging:
       type: trace
       sql: debug
 
-jasypt:
-  encryptor:
-    password: secret_key_gsp_todo_list
